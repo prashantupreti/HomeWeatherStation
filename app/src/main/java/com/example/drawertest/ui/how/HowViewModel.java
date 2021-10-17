@@ -1,14 +1,14 @@
-package com.example.drawertest.ui.gallery;
+package com.example.drawertest.ui.how;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class HowViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public HowViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel auctor nisl, luctus maximus nibh. Quisque in elit nisi. Donec blandit aliquam ullamcorper. Donec feugiat porta nibh eget lacinia. Quisque scelerisque eget sapien non fringilla. Morbi eleifend sagittis posuere. Sed non scelerisque erat, in pulvinar lacus. Vivamus suscipit ex vel pharetra sollicitudin. Donec vulputate lobortis fermentum.\n" +
                 "\n" +

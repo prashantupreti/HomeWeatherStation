@@ -1,4 +1,4 @@
-package com.example.drawertest.ui.slideshow;
+package com.example.drawertest.ui.about;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,20 +12,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.drawertest.R;
-import com.example.drawertest.databinding.FragmentSlideshowBinding;
+import com.example.drawertest.databinding.FragmentAboutBinding;
 
-public class SlideshowFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
-    private FragmentSlideshowBinding binding;
+    private AboutViewModel slideshowViewModel;
+    private FragmentAboutBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+                new ViewModelProvider(this).get(AboutViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentAboutBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textSlideshow;

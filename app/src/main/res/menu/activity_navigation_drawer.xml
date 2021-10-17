@@ -9,12 +9,12 @@
             android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/app_name" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_how"
+            android:icon="@drawable/ic_baseline_question_answer_24"
+            android:title="@string/menu_how" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="@string/menu_about" />
     </group>
 </menu>

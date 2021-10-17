@@ -7,257 +7,250 @@ android:layout_height="match_parent"
 android:background="@color/whitegray"
 tools:context=".NavigationActivity">
 
-<View
-    android:id="@+id/airTempView"
-    android:layout_width="180dp"
-    android:layout_height="80dp"
-    android:layout_marginStart="28dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginEnd="14dp"
-    android:background="@color/white"
-    app:layout_constraintEnd_toStartOf="@+id/humidityView"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-<View
-    android:id="@+id/bioPressureView"
-    android:layout_width="180dp"
-    android:layout_height="80dp"
-    android:layout_marginStart="14dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="28dp"
-    android:background="@color/white"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/windSpeedView"
-    app:layout_constraintTop_toBottomOf="@+id/humidityView" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-<View
-    android:id="@+id/windSpeedView"
-    android:layout_width="180dp"
-    android:layout_height="80dp"
-    android:layout_marginStart="28dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="14dp"
-    android:background="@color/white"
-    app:layout_constraintEnd_toStartOf="@+id/bioPressureView"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/airTempView" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-<View
-    android:id="@+id/humidityView"
-    android:layout_width="180dp"
-    android:layout_height="80dp"
-    android:layout_marginStart="14dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginEnd="28dp"
-    android:background="@color/white"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/airTempView"
-    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/airTempView"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/white"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp">
 
-<View
-    android:id="@+id/loggedDataView"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:background="@color/white"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/bioPressureView" />
+                    <TextView
+                        android:id="@+id/textTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/black"
+                        android:textSize="34sp"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
 
-<ImageView
-    android:id="@+id/imageView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    app:layout_constraintEnd_toEndOf="@id/airTempView"
-    app:layout_constraintTop_toTopOf="@id/airTempView"
-    app:srcCompat="@drawable/ic_baseline_device_thermostat_24"
-    android:contentDescription="TODO" />
+                    <ImageView
+                        android:id="@+id/thermostat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@string/air_ntemperature"
+                        app:srcCompat="@drawable/ic_baseline_device_thermostat_24" />
 
-<ImageView
-    android:id="@+id/imageView2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    app:layout_constraintEnd_toEndOf="@id/humidityView"
-    app:layout_constraintTop_toTopOf="@id/humidityView"
-    app:srcCompat="@drawable/ic_twotone_water_damage_24"
-    android:contentDescription="TODO" />
+                    <TextView
+                        android:id="@+id/labelTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/air_ntemperature"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
 
-<ImageView
-    android:id="@+id/imageView3"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    app:layout_constraintEnd_toEndOf="@id/windSpeedView"
-    app:layout_constraintTop_toTopOf="@id/windSpeedView"
-    app:srcCompat="@drawable/ic_baseline_air_24"
-    android:contentDescription="TODO" />
+                </androidx.cardview.widget.CardView>
 
-<ImageView
-    android:id="@+id/imageView4"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    app:layout_constraintEnd_toEndOf="@id/bioPressureView"
-    app:layout_constraintTop_toTopOf="@id/bioPressureView"
-    app:srcCompat="@drawable/ic_baseline_compress_24"
-    android:contentDescription="TODO" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/humidityView"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/white"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp">
 
-<TextView
-    android:id="@+id/labelTemp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="sans-serif"
-    android:text="@string/air_ntemperature"
-    android:textAlignment="textEnd"
-    android:textColor="@color/black"
-    android:textSize="14sp"
-    android:visibility="visible"
-    app:layout_constraintBottom_toBottomOf="@id/airTempView"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintLeft_toLeftOf="@id/airTempView"
-    app:layout_constraintRight_toRightOf="@id/airTempView"
-    app:layout_constraintTop_toTopOf="@id/airTempView"
-    app:layout_constraintVertical_bias="1.0"
-    tools:visibility="visible" />
+                    <TextView
+                        android:id="@+id/labelHum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/humidity"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
 
-<TextView
-    android:id="@+id/labelHum"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="sans-serif"
-    android:text="@string/humidity"
-    android:textAlignment="textEnd"
-    android:textColor="@color/black"
-    android:textSize="14sp"
-    android:visibility="visible"
-    app:layout_constraintBottom_toBottomOf="@id/humidityView"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintLeft_toLeftOf="@id/humidityView"
-    app:layout_constraintRight_toRightOf="@id/humidityView"
-    app:layout_constraintTop_toTopOf="@id/humidityView"
-    app:layout_constraintVertical_bias="1.0"
-    tools:visibility="visible" />
+                    <TextView
+                        android:id="@+id/textHum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/black"
+                        android:textSize="34sp"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
 
-<TextView
-    android:id="@+id/labelWindSpeed"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="sans-serif"
-    android:text="@string/wind_nspeed"
-    android:textAlignment="textEnd"
-    android:textColor="@color/black"
-    android:textSize="14sp"
-    android:visibility="visible"
-    app:layout_constraintBottom_toBottomOf="@id/windSpeedView"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintLeft_toLeftOf="@id/windSpeedView"
-    app:layout_constraintRight_toRightOf="@id/windSpeedView"
-    app:layout_constraintTop_toTopOf="@id/windSpeedView"
-    app:layout_constraintVertical_bias="1.0"
-    tools:visibility="visible" />
+                    <ImageView
+                        android:id="@+id/img_humidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@string/humidity"
+                        app:srcCompat="@drawable/ic_twotone_water_damage_24" />
+                </androidx.cardview.widget.CardView>
 
-<TextView
-    android:id="@+id/labelPressure"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="sans-serif"
-    android:text="@string/barometric_npressure"
-    android:textAlignment="textEnd"
-    android:textColor="@color/black"
-    android:textSize="14sp"
-    android:visibility="visible"
-    app:layout_constraintBottom_toBottomOf="@id/bioPressureView"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintLeft_toLeftOf="@id/bioPressureView"
-    app:layout_constraintRight_toRightOf="@id/bioPressureView"
-    app:layout_constraintTop_toTopOf="@id/bioPressureView"
-    app:layout_constraintVertical_bias="1.0"
-    tools:visibility="visible" />
+            </LinearLayout>
 
-<TextView
-    android:id="@+id/textTemp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="sans-serif"
-    android:textColor="@color/black"
-    android:textSize="34sp"
-    android:visibility="visible"
-    app:layout_constraintBottom_toBottomOf="@id/airTempView"
-    app:layout_constraintHorizontal_bias="0.2"
-    app:layout_constraintLeft_toLeftOf="@id/airTempView"
-    app:layout_constraintRight_toRightOf="@id/airTempView"
-    app:layout_constraintTop_toTopOf="@id/airTempView"
-    app:layout_constraintVertical_bias="0.25"
-    tools:visibility="visible" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
-<TextView
-    android:id="@+id/textHum"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="sans-serif"
-    android:textColor="@color/black"
-    android:textSize="34sp"
-    android:visibility="visible"
-    app:layout_constraintBottom_toBottomOf="@id/humidityView"
-    app:layout_constraintHorizontal_bias="0.2"
-    app:layout_constraintLeft_toLeftOf="@id/humidityView"
-    app:layout_constraintRight_toRightOf="@id/humidityView"
-    app:layout_constraintTop_toTopOf="@id/humidityView"
-    app:layout_constraintVertical_bias="0.25"
-    tools:visibility="visible" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/windSpeedView"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/white"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp">
 
-<TextView
-    android:id="@+id/textWind"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="sans-serif"
-    android:textColor="@color/black"
-    android:textSize="34sp"
-    android:visibility="visible"
-    app:layout_constraintBottom_toBottomOf="@id/windSpeedView"
-    app:layout_constraintHorizontal_bias="0.206"
-    app:layout_constraintLeft_toLeftOf="@id/windSpeedView"
-    app:layout_constraintRight_toRightOf="@id/windSpeedView"
-    app:layout_constraintTop_toTopOf="@id/windSpeedView"
-    app:layout_constraintVertical_bias="0.229"
-    tools:visibility="visible" />
+                    <ImageView
+                        android:id="@+id/imageWind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@string/wind_nspeed"
+                        app:srcCompat="@drawable/ic_baseline_air_24" />
 
-<TextView
-    android:id="@+id/textPressure"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="sans-serif"
-    android:textColor="@color/black"
-    android:textSize="34sp"
-    android:visibility="visible"
-    app:layout_constraintBottom_toBottomOf="@id/bioPressureView"
-    app:layout_constraintHorizontal_bias="0.193"
-    app:layout_constraintLeft_toLeftOf="@id/bioPressureView"
-    app:layout_constraintRight_toRightOf="@id/bioPressureView"
-    app:layout_constraintTop_toTopOf="@id/bioPressureView"
-    app:layout_constraintVertical_bias="0.229"
-    tools:visibility="visible" />
+                    <TextView
+                        android:id="@+id/labelWindSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|right"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/wind_nspeed"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
 
-<ListView
-    android:id="@+id/listView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="28dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="28dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@id/loggedDataView" />
-<!--this the navigation view which draws
+                    <TextView
+                        android:id="@+id/textWind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/black"
+                        android:textSize="34sp"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/bioPressureView"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/white"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/imagePressure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@string/barometric_npressure"
+                        app:srcCompat="@drawable/ic_baseline_compress_24" />
+
+                    <TextView
+                        android:id="@+id/labelPressure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|right"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/barometric_npressure"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/textPressure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/black"
+                        android:textSize="34sp"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/loggedDataView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/white"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp">
+
+                    <ListView
+                        android:id="@+id/listView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="14dp" />
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--this the navigation view which draws
     and shows the navigation drawer-->
 <!--include the menu created in the menu folder-->
 <!--    <com.google.android.material.navigation.NavigationView-->

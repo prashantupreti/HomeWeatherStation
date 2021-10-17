@@ -59,4 +59,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }

@@ -26,6 +26,29 @@
         <entry key="..\:/DrawerTest/app/src/main/res/layout/nav_header_navigation.xml" value="0.13043478260869565" />
         <entry key="..\:/DrawerTest/app/src/main/res/menu/activity_navigation_drawer.xml" value="0.14270833333333333" />
         <entry key="..\:/DrawerTest/app/src/main/res/menu/navigation.xml" value="0.14270833333333333" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/ic_baseline_air_24.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/ic_baseline_compress_24.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/ic_baseline_device_thermostat_24.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/ic_favorite_black_48dp.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/ic_menu_24dp.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/ic_menu_camera.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/ic_twotone_water_damage_24.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/drawable/side_nav_bar.xml" value="0.2890625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/layout/activity_navigation.xml" value="0.19701086956521738" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/layout/app_bar_navigation.xml" value="0.19701086956521738" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/layout/content_navigation.xml" value="0.19701086956521738" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/layout/fragment_about.xml" value="0.14322916666666666" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/layout/fragment_gallery.xml" value="0.27291666666666664" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/layout/fragment_home.xml" value="0.10625" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/layout/fragment_how.xml" value="0.14270833333333333" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/layout/fragment_slideshow.xml" value="0.19701086956521738" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/layout/item_list.xml" value="0.19701086956521738" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/layout/nav_header_navigation.xml" value="0.19701086956521738" />
+        <entry key="..\:/HomeWeatherStation/app/src/main/res/menu/activity_navigation_drawer.xml" value="1.0" />
       </map>
     </option>
   </component>
