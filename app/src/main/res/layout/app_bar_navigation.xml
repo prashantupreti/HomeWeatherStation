@@ -9,8 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.DrawerTest.AppBarOverlay"
-        android:icon="@drawable/ic_menu_24dp">
+        android:theme="@style/Theme.DrawerTest.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -19,8 +18,7 @@
             android:background="@color/black"
             app:popupTheme="@style/Theme.DrawerTest.PopupOverlay"
             app:subtitleTextColor="@color/white"
-            app:titleTextColor="@color/white"
-            />
+            app:titleTextColor="@color/white"/>
 
     </com.google.android.material.appbar.AppBarLayout>
     <include layout="@layout/content_navigation" />

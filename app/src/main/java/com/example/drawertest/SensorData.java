@@ -1,6 +1,8 @@
 package com.example.drawertest;
 
-public class SensorData {
+import androidx.lifecycle.ViewModel;
+
+public class SensorData extends ViewModel {
     String id, air_temperature, humidity, wind_speed, barometric_pressure, created_at;
 
     public SensorData(String sensor_id, String air_temp, String hum, String speed, String pressure, String created){
