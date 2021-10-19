@@ -12,9 +12,9 @@
             android:id="@+id/nav_how"
             android:icon="@drawable/ic_baseline_question_answer_24"
             android:title="@string/menu_how" />
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_baseline_info_24"
-            android:title="@string/menu_about" />
+<!--        <item-->
+<!--            android:id="@+id/nav_about"-->
+<!--            android:icon="@drawable/ic_baseline_info_24"-->
+<!--            android:title="@string/menu_about" />-->
     </group>
 </menu>

@@ -9,7 +9,7 @@ tools:context=".NavigationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,7 +17,7 @@ tools:context=".NavigationActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="80dp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
@@ -59,6 +59,7 @@ tools:context=".NavigationActivity">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="15dp"
                     android:fontFamily="sans-serif"
                     android:text="@string/air_ntemperature"
                     android:textAlignment="textEnd"
@@ -86,6 +87,7 @@ tools:context=".NavigationActivity">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="15dp"
                     android:fontFamily="sans-serif"
                     android:text="@string/humidity"
                     android:textAlignment="textEnd"
@@ -120,7 +122,7 @@ tools:context=".NavigationActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="80dp"
             android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
@@ -219,9 +221,9 @@ tools:context=".NavigationActivity">
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/loggedDataView"
+            android:id="@+id/cardView"
             android:layout_width="match_parent"
-            android:layout_height="320dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
@@ -242,16 +244,7 @@ tools:context=".NavigationActivity">
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
-
-
-    <!--this the navigation view which draws
-    and shows the navigation drawer-->
-<!--include the menu created in the menu folder-->
-<!--    <com.google.android.material.navigation.NavigationView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="start"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:menu="@menu/activity_main_drawer" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
