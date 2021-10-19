@@ -12,12 +12,15 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.drawertest.databinding.ActivityNavigationBinding;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -33,14 +36,12 @@ public class NavigationActivity extends AppCompatActivity {
     Context context=this;
     ListView listView;
     ArrayList<SensorData> arrayOfSensorData = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityNavigationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setSupportActionBar(binding.appBarNavigation.toolbar);
 //        binding.appBarNavigation.fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
