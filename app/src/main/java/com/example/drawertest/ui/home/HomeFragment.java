@@ -51,6 +51,7 @@ public class HomeFragment extends Fragment {
 
     public void fetchJson(){
         String url = "http://api.plottingly.com/getData.php";
+        final TextView textCreatedAt = binding.textCreatedAt;
         final TextView textTemp = binding.textTemp;
         final TextView textHum = binding.textHum;
         final TextView textWind =  binding.textWind;
@@ -60,10 +61,12 @@ public class HomeFragment extends Fragment {
                 (Request.Method.GET, url, null, response -> {
                     try {
                         JSONObject jsonObject = response.getJSONObject(0);
+                        String created_at = jsonObject.getString("created_at");
                         String air_temp = jsonObject.getString("air_temperature");
                         String humidity = jsonObject.getString("humidity");
                         String wind_speed = jsonObject.getString("wind_speed");
                         String pressure = jsonObject.getString("barometric_pressure");
+                        textCreatedAt.setText("Updated on: "+created_at);
                         textTemp.setText(air_temp);
                         textHum.setText(humidity);
                         textWind.setText(wind_speed);
