@@ -3,20 +3,13 @@ package com.example.drawertest.ui.home;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
@@ -30,13 +23,7 @@ import com.example.drawertest.databinding.FragmentHomeBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
@@ -48,18 +35,11 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        fetchJson();
-        final ProgressBar loading_spinner=binding.loadingSpinner;
-        final LinearLayout content=binding.content;
-        content.setVisibility(View.GONE);
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                loading_spinner.setVisibility(View.GONE);
-                content.setVisibility(View.VISIBLE);
-            }
-        }, 1000);
+        try {
+            fetchJson();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
         return root;
     }
 

@@ -25,7 +25,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textAlignment="center"
-                        android:textColor="?attr/colorPrimary" />
+                        android:textColor="@color/black" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -53,7 +53,7 @@
                             android:id="@+id/air_temperature_lv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="?attr/colorPrimary" />
+                            android:textColor="@color/black" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -73,7 +73,7 @@
                             android:id="@+id/wind_speed_lv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="?attr/colorPrimary" />
+                            android:textColor="@color/black" />
                     </LinearLayout>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -94,7 +94,7 @@
                             android:id="@+id/humidity_lv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="?attr/colorPrimary" />
+                            android:textColor="@color/black" />
 
                         <ImageView
                             android:id="@+id/imageView5"
@@ -114,14 +114,13 @@
                             android:id="@+id/pressure_lv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="?attr/colorPrimary" />
+                            android:textColor="@color/black" />
 
                         <ImageView
                             android:id="@+id/imageView4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_weight="1"
                             app:srcCompat="@drawable/ic_baseline_compress_24" />
 
                     </LinearLayout>
