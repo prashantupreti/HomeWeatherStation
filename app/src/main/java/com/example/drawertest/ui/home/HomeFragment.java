@@ -9,10 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
@@ -30,6 +32,7 @@ import org.json.JSONObject;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,6 +43,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     ListView listView;
     ArrayList<SensorData> arrayOfSensorData = new ArrayList<>();
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +61,7 @@ public class HomeFragment extends Fragment {
                 loading_spinner.setVisibility(View.GONE);
                 content.setVisibility(View.VISIBLE);
             }
-        }, 1000);
+        }, 2000);
         return root;
     }
 
@@ -65,6 +69,15 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public String dividebyTen(String str){
+        double dnum = Double.parseDouble(str);
+        dnum   =   dnum/10;
+        DecimalFormat df = new DecimalFormat("#.#");
+        df.format(dnum);
+        String val    =   String.valueOf(dnum);
+        return val;
     }
 
     public void fetchJson(){
@@ -85,10 +98,10 @@ public class HomeFragment extends Fragment {
                         String wind_speed = jsonObject.getString("wind_speed");
                         String pressure = jsonObject.getString("barometric_pressure");
                         textCreatedAt.setText("Updated on: "+created_at);
-                        textTemp.setText(air_temp);
-                        textHum.setText(humidity);
-                        textWind.setText(wind_speed);
-                        textPressure.setText(pressure);
+                        textTemp.setText(dividebyTen(air_temp));
+                        textHum.setText(dividebyTen(humidity));
+                        textWind.setText(dividebyTen(wind_speed));
+                        textPressure.setText(dividebyTen(pressure));
                         for(int i=1;i<response.length();i++){
                             JSONObject jsonObject1 = response.getJSONObject(i);
                             String id1=jsonObject1.getString("id");
@@ -97,20 +110,28 @@ public class HomeFragment extends Fragment {
                             String wind_speed1 = jsonObject1.getString("wind_speed");
                             String pressure1 = jsonObject1.getString("barometric_pressure");
                             String created_at1=jsonObject1.getString("created_at");
-                            SensorData sensorData=new SensorData(id1,air_temp1,humidity1,wind_speed1,pressure1,created_at1);
+                            SensorData sensorData=new SensorData(id1,dividebyTen(air_temp1),dividebyTen(humidity1),dividebyTen(wind_speed1),dividebyTen(pressure1),created_at1);
                             arrayOfSensorData.add(sensorData);
                         }
                         listView = binding.listView;
                         MyAdapter adapter = new MyAdapter(getActivity(), arrayOfSensorData);
                         listView.setAdapter(adapter);
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                           public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+                               String itemPicked = arrayOfSensorData.get(position).getAirTemperature()+" °C\t\t\t"+arrayOfSensorData.get(position).getHumidity()+" %\n"+
+                                       arrayOfSensorData.get(position).getWindSpeed()+" m/s\t\t\t"+arrayOfSensorData.get(position).getBarometricPressure()+" hPa\nON "+
+                                       arrayOfSensorData.get(position).getCreatedAt();
+                               Toast.makeText(getActivity(), itemPicked, Toast.LENGTH_SHORT).show();
+                           }
+                       });
                     } catch(JSONException e){
                         e.printStackTrace();
                     }
                 }, error -> {
-                    textTemp.setText("Error!");
-                    textHum.setText("Error!");
-                    textWind.setText("Error!");
-                    textPressure.setText("Error!");
+                    final ProgressBar loading_spinner=binding.loadingSpinner;
+                    final LinearLayout content=binding.content;
+                    content.setVisibility(View.GONE);
+                    loading_spinner.setVisibility(View.VISIBLE);
                     Log.v("MyActivity","Something went wrong!");
                     error.printStackTrace();
 

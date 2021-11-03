@@ -47,10 +47,10 @@ public class MyAdapter extends BaseAdapter {
         pressure_lv = (TextView) convertView.findViewById(R.id.pressure_lv);
 
         created_at_lv.setText("ON\n"+arrayList.get(position).getCreatedAt());
-        air_temperature_lv.setText(arrayList.get(position).getAirTemperature());
-        humidity_lv.setText(arrayList.get(position).getHumidity());
-        wind_speed_lv.setText(arrayList.get(position).getWindSpeed());
-        pressure_lv.setText(arrayList.get(position).getBarometricPressure());
+        air_temperature_lv.setText(arrayList.get(position).getAirTemperature()+" °C");
+        humidity_lv.setText(arrayList.get(position).getHumidity()+" %");
+        wind_speed_lv.setText(arrayList.get(position).getWindSpeed()+ " m/s");
+        pressure_lv.setText(arrayList.get(position).getBarometricPressure()+ " hPa");
         return convertView;
     }
 }

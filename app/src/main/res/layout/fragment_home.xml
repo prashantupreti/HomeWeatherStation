@@ -69,6 +69,16 @@ tools:context=".NavigationActivity">
                     app:srcCompat="@drawable/ic_baseline_device_thermostat_24" />
 
                 <TextView
+                    android:id="@+id/unitTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="10dp"
+                    android:text="°C"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="24sp" />
+
+                <TextView
                     android:id="@+id/labelTemp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -119,6 +129,16 @@ tools:context=".NavigationActivity">
                     android:visibility="visible"
                     tools:visibility="visible" />
 
+                <TextView
+                    android:id="@+id/unitHum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="10dp"
+                    android:text="%"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="24sp" />
+
                 <ImageView
                     android:id="@+id/img_humidity"
                     android:layout_width="wrap_content"
@@ -148,6 +168,16 @@ tools:context=".NavigationActivity">
                 android:background="@color/design_default_color_on_primary"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/unitWind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="10dp"
+                    android:text="m/s"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="24sp" />
 
                 <ImageView
                     android:id="@+id/imageWind"
@@ -194,6 +224,16 @@ tools:context=".NavigationActivity">
                 android:background="@color/design_default_color_on_primary"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/unitPress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="10dp"
+                    android:text="hPa"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="24sp" />
 
                 <ImageView
                     android:id="@+id/imagePressure"
