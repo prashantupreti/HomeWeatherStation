@@ -1,6 +1,7 @@
 package com.example.drawertest;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,10 +48,10 @@ public class MyAdapter extends BaseAdapter {
         pressure_lv = (TextView) convertView.findViewById(R.id.pressure_lv);
 
         created_at_lv.setText("ON\n"+arrayList.get(position).getCreatedAt());
-        air_temperature_lv.setText(arrayList.get(position).getAirTemperature()+" °C");
-        humidity_lv.setText(arrayList.get(position).getHumidity()+" %");
-        wind_speed_lv.setText(arrayList.get(position).getWindSpeed()+ " m/s");
-        pressure_lv.setText(arrayList.get(position).getBarometricPressure()+ " hPa");
+        air_temperature_lv.setText(arrayList.get(position).getAirTemperature()+"°C");
+        humidity_lv.setText(arrayList.get(position).getHumidity()+"%");
+        wind_speed_lv.setText(arrayList.get(position).getWindSpeed()+ "m/s");
+        pressure_lv.setText(arrayList.get(position).getBarometricPressure()+ "hPa");
         return convertView;
     }
 }
