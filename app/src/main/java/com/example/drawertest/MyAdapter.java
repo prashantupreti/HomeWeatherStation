@@ -47,7 +47,7 @@ public class MyAdapter extends BaseAdapter {
         wind_speed_lv = (TextView) convertView.findViewById(R.id.wind_speed_lv);
         pressure_lv = (TextView) convertView.findViewById(R.id.pressure_lv);
 
-        created_at_lv.setText("ON\n"+arrayList.get(position).getCreatedAt());
+        created_at_lv.setText("On\n"+arrayList.get(position).getCreatedAt());
         air_temperature_lv.setText(arrayList.get(position).getAirTemperature()+"°C");
         humidity_lv.setText(arrayList.get(position).getHumidity()+"%");
         wind_speed_lv.setText(arrayList.get(position).getWindSpeed()+ "m/s");

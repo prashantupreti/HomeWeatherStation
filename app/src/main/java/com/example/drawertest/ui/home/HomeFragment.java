@@ -41,7 +41,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class HomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     ListView listView;
     ArrayList<SensorData> arrayOfSensorData = new ArrayList<>();
@@ -72,18 +72,6 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         df.format(dnum);
         String val    =   String.valueOf(dnum);
         return val;
-    }
-
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
-
-        String selected = parent.getItemAtPosition(pos).toString();
-//        binding.spinnerText.setText(selected);
-        onSpinnerChange(selected);
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
     }
 
     public void fetchJson(){
@@ -120,11 +108,6 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
                             String created_at2_trim[]=created_at2.split(",",2);
                             createdAtList.add(created_at2_trim[0]);
                         }
-                        //Traversing elements
-                        Iterator<String> itr=createdAtList.iterator();
-//                        while(itr.hasNext()){
-//                            Log.d(null, "fetchJson: "+itr.next());
-//                        }
 
                         ArrayList<String> createdAtArrayList=new ArrayList<>(createdAtList);
                         Collections.sort(createdAtArrayList,Collections.reverseOrder());
@@ -134,33 +117,51 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
                         spinnerArrayAdapter.setDropDownViewResource(android.R.layout
                                 .simple_spinner_dropdown_item);
                         spinner.setAdapter(spinnerArrayAdapter);
-                        spinner.setOnItemSelectedListener(this);
-
-                        for(int i=1;i<response.length();i++){
-                            JSONObject jsonObject1 = response.getJSONObject(i);
-                            String id1=jsonObject1.getString("id");
-                            String air_temp1 = jsonObject1.getString("air_temperature");
-                            String humidity1 = jsonObject1.getString("humidity");
-                            String wind_speed1 = jsonObject1.getString("wind_speed");
-                            String pressure1 = jsonObject1.getString("barometric_pressure");
-                            String created_at1=jsonObject1.getString("created_at");
-                            SensorData sensorData=new SensorData(id1,dividebyTen(air_temp1),dividebyTen(humidity1),dividebyTen(wind_speed1),dividebyTen(pressure1),created_at1);
-                            arrayOfSensorData.add(sensorData);
-                        }
-
-                        listView = binding.listView;
-                        MyAdapter adapter = new MyAdapter(getActivity(), arrayOfSensorData);
-                        listView.setAdapter(adapter);
                         loading_spinner.setVisibility(View.GONE);
                         content.setVisibility(View.VISIBLE);
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                           public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-                               String itemPicked = arrayOfSensorData.get(position).getAirTemperature()+" °C\t\t\t"+arrayOfSensorData.get(position).getHumidity()+" %\n"+
-                                       arrayOfSensorData.get(position).getWindSpeed()+" m/s\t\t\t"+arrayOfSensorData.get(position).getBarometricPressure()+" hPa\nON "+
-                                       arrayOfSensorData.get(position).getCreatedAt();
-                               Toast.makeText(getActivity(), itemPicked, Toast.LENGTH_SHORT).show();
-                           }
-                       });
+                        //help: https://camposha.info/android-examples/android-volley-spinner/
+                        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                try {
+                                    arrayOfSensorData.clear();
+                                    for(int i=1;i<response.length();i++){
+                                        JSONObject jsonObject1 = response.getJSONObject(i);
+                                        if(jsonObject1.getString("created_at").split(",",2)[0].equals(spinner.getItemAtPosition(position).toString())) {
+                                            String id1 = jsonObject1.getString("id");
+                                            String air_temp1 = jsonObject1.getString("air_temperature");
+                                            String humidity1 = jsonObject1.getString("humidity");
+                                            String wind_speed1 = jsonObject1.getString("wind_speed");
+                                            String pressure1 = jsonObject1.getString("barometric_pressure");
+                                            String created_at1 = jsonObject1.getString("created_at");
+                                            SensorData sensorData = new SensorData(id1, dividebyTen(air_temp1), dividebyTen(humidity1), dividebyTen(wind_speed1), dividebyTen(pressure1), created_at1);
+                                            arrayOfSensorData.add(sensorData);
+                                        }
+                                    }
+                                    listView = binding.listView;
+                                    MyAdapter adapter = new MyAdapter(getActivity(), arrayOfSensorData);
+                                    adapter.notifyDataSetChanged();
+                                    listView.setAdapter(adapter);
+                                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                        public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+                                            String itemPicked = "Air Temperature: "+arrayOfSensorData.get(position).getAirTemperature()+" °C\nHumidity: "+
+                                                                arrayOfSensorData.get(position).getHumidity()+" %\nWind Speed: "+
+                                                                arrayOfSensorData.get(position).getWindSpeed()+" m/s\nBarometric Pressure: "+
+                                                                arrayOfSensorData.get(position).getBarometricPressure()+" hPa\nOn "+
+                                                                arrayOfSensorData.get(position).getCreatedAt();
+                                            Toast.makeText(getActivity(), itemPicked, Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                                catch (Exception e){
+
+                                }
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+                            }
+                        });
                     } catch(JSONException e){
                         e.printStackTrace();
                     }
@@ -176,71 +177,4 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         MySingleton.getInstance(getActivity()).addToRequestQueue(jsonArrayRequest);
     }
 
-    public void onSpinnerChange(String dateVal){
-        String url = "http://api.plottingly.com/getData.php";
-
-        Spinner spinner = (Spinner) binding.getRoot().findViewById(R.id.spinner);
-        @SuppressLint("SetTextI18n") JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
-                (Request.Method.GET, url, null, response -> {
-                    try {
-                        HashSet<String> createdAtList=new HashSet<String>();
-                        for(int i=0;i<response.length();i++){
-                            JSONObject jsonObject2 = response.getJSONObject(i);
-                            String created_at2=jsonObject2.getString("created_at");
-                            String created_at2_trim[]=created_at2.split(",",2);
-                            createdAtList.add(created_at2_trim[0]);
-                        }
-                        //Traversing elements
-                        Iterator<String> itr=createdAtList.iterator();
-//                        while(itr.hasNext()){
-//                            Log.d(null, "fetchJson: "+itr.next());
-//                        }
-
-                        ArrayList<String> createdAtArrayList=new ArrayList<>(createdAtList);
-                        Collections.sort(createdAtArrayList,Collections.reverseOrder());
-                        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
-                                (getContext(), android.R.layout.simple_spinner_item,
-                                        createdAtArrayList);
-                        spinnerArrayAdapter.setDropDownViewResource(android.R.layout
-                                .simple_spinner_dropdown_item);
-                        spinner.setAdapter(spinnerArrayAdapter);
-                        spinner.setOnItemSelectedListener(this);
-
-                        for(int i=1;i<response.length();i++){
-                            JSONObject jsonObject1 = response.getJSONObject(i);
-                            if(dateVal==jsonObject1.getString("created_at").split(",",2)[0]){
-                                String id1=jsonObject1.getString("id");
-                                String air_temp1 = jsonObject1.getString("air_temperature");
-                                String humidity1 = jsonObject1.getString("humidity");
-                                String wind_speed1 = jsonObject1.getString("wind_speed");
-                                String pressure1 = jsonObject1.getString("barometric_pressure");
-                                String created_at1=jsonObject1.getString("created_at");
-                                SensorData sensorData=new SensorData(id1,dividebyTen(air_temp1),dividebyTen(humidity1),dividebyTen(wind_speed1),dividebyTen(pressure1),created_at1);
-                                arrayOfSensorData.add(sensorData);
-                            }
-                        }
-
-                        listView = binding.listView;
-                        MyAdapter adapter = new MyAdapter(getActivity(), arrayOfSensorData);
-                        listView.setAdapter(adapter);
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-                                String itemPicked = arrayOfSensorData.get(position).getAirTemperature()+" °C\t\t\t"+arrayOfSensorData.get(position).getHumidity()+" %\n"+
-                                        arrayOfSensorData.get(position).getWindSpeed()+" m/s\t\t\t"+arrayOfSensorData.get(position).getBarometricPressure()+" hPa\nON "+
-                                        arrayOfSensorData.get(position).getCreatedAt();
-                                Toast.makeText(getActivity(), itemPicked, Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    } catch(JSONException e){
-                        e.printStackTrace();
-                    }
-                }, error -> {
-                    Log.v("MyActivity","Something went wrong!");
-                    error.printStackTrace();
-
-                });
-
-        // Access the RequestQueue through your singleton class.
-        MySingleton.getInstance(getActivity()).addToRequestQueue(jsonArrayRequest);
-    }
 }
